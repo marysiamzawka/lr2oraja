@@ -88,18 +88,14 @@ public enum BMSPlayerRule {
 	private static double calculateDefaultTotal(Mode mode, int totalnotes) {
 			// return 160.0 + (totalnotes + Math.min(Math.max(totalnotes, 390), 600) - 390)*11/70;
 			double new_total = 0;
-			  if ( totalnotes >= 400 ) {
-				if ( totalnotes >= 600 ) {
-				  new_total = (double)(totalnotes - 600) / 5.0 + 360.0;
-				}
-				else {
-				  new_total = (double)(totalnotes - 400) / 2.5 + 280.0;
-				}
-			  }
-			  else {
-				new_total = (double)totalnotes / 5.0 + 200.0;
-			  }
-			  return new_total * 0.8;
+			if ( totalnotes >= 600 ) {
+			  new_total = (double)(totalnotes - 600) / 5.0 + 360.0;
+			} else if ( totalnotes >= 400 ) {
+			  new_total = (double)(totalnotes - 400) / 2.5 + 280.0;
+			} else {
+			  new_total = (double)totalnotes / 5.0 + 200.0;
+			}
+			return new_total * 0.8;
         /*
 		switch (mode) {
 		case BEAT_7K:
